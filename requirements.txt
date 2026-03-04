@@ -1,0 +1,30 @@
+# --- 시스템 및 기본 유틸리티 ---
+numpy==1.26.4
+pandas
+python-dotenv
+beautifulsoup4
+fake-useragent
+requests
+aiohttp
+protobuf==3.20.2
+
+# --- 데이터베이스 및 파이프라인 오케스트레이션 ---
+sqlalchemy
+asyncpg
+psycopg2-binary
+prefect
+
+# --- Azure ML 연동 ---
+azure-ai-ml
+azure-identity
+
+# --- 딥러닝 및 컴퓨터 비전 (AI Processor) ---
+torch==2.1.2 --extra-index-url https://download.pytorch.org/whl/cu118
+torchvision==0.16.2 --extra-index-url https://download.pytorch.org/whl/cu118
+pillow
+opencv-python-headless==4.9.0.80
+
+# --- 핵심 AI 모델 ---
+ultralytics==8.4.13
+paddlepaddle-gpu==2.6.1
+paddleocr==2.7.3

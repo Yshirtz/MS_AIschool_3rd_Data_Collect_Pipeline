@@ -1,0 +1,48 @@
+name: pipeline-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  # [핵심 1] 시스템 라이브러리(libGL 등) 확보를 위해 ffmpeg 설치
+  # (opencv를 직접 설치하면 Pip과 충돌나므로, ffmpeg가 의존성으로 대신 깔아주게 함)
+  - ffmpeg
+
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu118
+
+      # [핵심 2] Numpy 버전 고정 (Pip 섹션에서 관리)
+      - numpy==1.26.4
+
+      # --- [1. Azure ML 필수] ---
+      - azure-ai-ml
+      - azure-identity
+
+      # --- [2. 파이프라인 제어] ---
+      - prefect
+
+      # --- [3. 데이터 핸들링] ---
+      - pandas
+      - sqlalchemy
+      - asyncpg
+      - psycopg2-binary
+      - beautifulsoup4
+      - fake-useragent
+      - python-dotenv
+      - requests
+      - aiohttp
+
+      # --- [4. PyTorch] ---
+      - torch==2.1.2
+      - torchvision==0.16.2
+      - pillow
+
+      # --- [5. OpenCV] ---
+      # 충돌 방지를 위해 headless 버전 사용
+      - opencv-python-headless==4.9.0.80
+
+      # --- [6. AI 모델] ---
+      - ultralytics==8.4.13
+      - paddlepaddle-gpu==2.6.1
+      - paddleocr==2.7.3
+      - protobuf==3.20.2
